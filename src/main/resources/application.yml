@@ -4,3 +4,13 @@ spring:
   application:
     name: crud-service
 
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/crud
+    username: root
+    password: 123456
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
