@@ -10,8 +10,7 @@ public interface BookService {
      Book createBook(Book book);
      List<Book> fetchBookList();
      void deleteBook(Long bookId);
-
-     Book updateBook(Book book);
+     Book updateBook(Long bookId,Book book);
 
 
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -31,7 +32,17 @@ public class BookServiceImp implements BookService{
     }
 
     @Override
-    public Book updateBook(Book book) {
-        return bookRepository.save(book);
+    public Book updateBook(Long bookId,Book book) {
+
+       return bookRepository.findById(bookId)
+                .map(savedBook -> {
+                    savedBook.setName(book.getName());
+                    savedBook.setWriter(book.getWriter());
+                    savedBook.setDescription(book.getDescription());
+                    return bookRepository.save(savedBook);
+
+                })
+                .orElseThrow();
+
     }
 }

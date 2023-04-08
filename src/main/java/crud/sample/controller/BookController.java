@@ -48,23 +48,23 @@ public class BookController {
     }
 
 
-    @PutMapping("/book")
-    public Book updateBook(@RequestBody Book book)
+    @PutMapping("/updateBook/{id}")
+    public ResponseEntity<Book> updateBook(@PathVariable("id") long bookId,@RequestBody Book book)
 
     {
         Book returnValue = new Book();
         try {
-            returnValue = bookService.updateBook(book);
+            returnValue = bookService.updateBook(bookId,book);
         }catch (Exception e){
             //LOGBACK "problem in updating book"
         }
-        return returnValue;
+        return new ResponseEntity<>(returnValue, HttpStatus.OK);
 
 
     }
 
     @DeleteMapping("/deleteBook/{id}")
-    public String deleteBookById(@PathVariable("id") Long bookId)
+    public ResponseEntity<String> deleteBookById(@PathVariable("id") Long bookId)
 
     {
         try {
@@ -73,7 +73,7 @@ public class BookController {
             //LOGBACK "problem in deleting book"
         }
 
-        return "Deleted Successfully";
+        return new ResponseEntity<>("Book deleted successfully!.", HttpStatus.OK);
     }
 
 
