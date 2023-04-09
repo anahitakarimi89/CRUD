@@ -4,6 +4,7 @@ spring:
   application:
     name: crud-service
 
+
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/crud
@@ -13,4 +14,10 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
+
+
+logging:
+  level:
+    crud.sample.controller: DEBUG
+
 
