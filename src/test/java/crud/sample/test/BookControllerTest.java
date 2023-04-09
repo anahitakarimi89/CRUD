@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BookControllerTest extends AbstractTest{
 
-   @Override
+    @Override
     @Before
     public void setUp() {
         super.setUp();
@@ -40,7 +40,7 @@ public class BookControllerTest extends AbstractTest{
         book.setId(10L);
         book.setName("Gone With The Winds");
         book.setWriter("margaret mitchel");
-        book.setDescription("Romance");
+        book.setDescription("Novel");
         String inputJson = super.mapToJson(book);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
