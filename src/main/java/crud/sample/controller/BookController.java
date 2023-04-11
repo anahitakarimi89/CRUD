@@ -34,8 +34,7 @@ public class BookController {
 
         }catch (Exception e){
 
-            log.error("problem in saving book");
-            log.debug("problem in cause by"+e.getMessage());
+            log.error("problem in saving book"+e.getMessage());
 
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(returnValue);
