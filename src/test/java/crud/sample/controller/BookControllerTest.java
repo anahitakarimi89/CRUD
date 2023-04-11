@@ -49,7 +49,7 @@ class BookControllerTest {
         given(bookService.createBook(any(Book.class)))
                 .willAnswer((invocation)-> invocation.getArgument(0));
 
-        ResultActions response = mockMvc.perform(post("/books/saveBook")
+        ResultActions response = mockMvc.perform(post("/books/book")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(book)));
 
@@ -74,7 +74,7 @@ class BookControllerTest {
         listOfBooks.add(Book.builder().id(102L).name("Gone With The Winds").writer("Margaret mitchel").description("Novel").build());
         given(bookService.fetchBookList()).willReturn(listOfBooks);
 
-        ResultActions response = mockMvc.perform(get("/books/bookLists"));
+        ResultActions response = mockMvc.perform(get("/books/books"));
         response.andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(jsonPath("$.size()",
@@ -96,7 +96,7 @@ class BookControllerTest {
                 .willAnswer((invocation)-> invocation.getArgument(0));
 
 
-        ResultActions response = mockMvc.perform(put("/books/updateBook/{id}", bookId)
+        ResultActions response = mockMvc.perform(put("/books/book/{id}", bookId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(updateBook)));
 
@@ -117,7 +117,7 @@ class BookControllerTest {
 
         long bookId = 100L;
         willDoNothing().given(bookService).deleteBook(bookId);
-        ResultActions response = mockMvc.perform(delete("/books/deleteBook/{id}", bookId));
+        ResultActions response = mockMvc.perform(delete("/books/book/{id}", bookId));
         response.andExpect(status().isOk())
                 .andDo(print());
     }

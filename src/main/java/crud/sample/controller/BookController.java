@@ -24,7 +24,7 @@ public class BookController {
     private final Logger log = LoggerFactory.getLogger(BookController.class);
 
 
-    @PostMapping("/saveBook")
+    @PostMapping("/book")
     public ResponseEntity saveBook(
              @RequestBody Book book)
     {
@@ -41,7 +41,7 @@ public class BookController {
     }
 
 
-    @GetMapping("/bookLists")
+    @GetMapping("/books")
     public List<Book> fetchBookList()
     {
         List<Book> returnResult = new ArrayList<>();
@@ -56,7 +56,7 @@ public class BookController {
     }
 
 
-    @PutMapping("/updateBook/{id}")
+    @PutMapping("/book/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable("id") long bookId,@RequestBody Book book)
 
     {
@@ -71,7 +71,7 @@ public class BookController {
 
     }
 
-    @DeleteMapping("/deleteBook/{id}")
+    @DeleteMapping("/book/{id}")
     public ResponseEntity<String> deleteBookById(@PathVariable("id") Long bookId)
 
     {
@@ -82,7 +82,7 @@ public class BookController {
             log.error("problem in deleting book"+e.getMessage());
         }
 
-        return new ResponseEntity<>("Book deleted successfully!.", HttpStatus.OK);
+        return new ResponseEntity<>("Book deleted successfully!.", HttpStatus.NO_CONTENT);
     }
 
 

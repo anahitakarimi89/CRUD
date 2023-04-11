@@ -25,10 +25,8 @@ public class SecurityConfig {
         http
                 .cors().and()
                 .csrf().disable().authorizeHttpRequests()
-                .requestMatchers("/books/bookLists").permitAll()
-                .requestMatchers("/books/saveBook").hasRole("USER")
-                .requestMatchers("/books/updateBook").hasRole("ADMIN")
-                .requestMatchers("/books/deleteBook").hasRole("ADMIN")
+                .requestMatchers("/books/books").permitAll()
+                .requestMatchers("/books/book").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()
