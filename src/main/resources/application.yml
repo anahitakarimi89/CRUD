@@ -15,9 +15,3 @@ spring:
     generate-ddl: true
     show-sql: true
 
-
-logging:
-  level:
-    crud.sample.controller: DEBUG
-
-

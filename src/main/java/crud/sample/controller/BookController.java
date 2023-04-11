@@ -50,8 +50,8 @@ public class BookController {
             returnResult = bookService.fetchBookList();
         }catch (Exception e){
 
-            log.error("problem in fetching book list");
-            log.debug("problem in cause by"+e.getMessage());
+            log.error("problem in fetching book list" + e.getMessage());
+
         }
         return returnResult;
     }
@@ -65,9 +65,7 @@ public class BookController {
         try {
             returnValue = bookService.updateBook(bookId,book);
         }catch (Exception e){
-
-            log.error("problem in updating book");
-            log.debug("problem in cause by"+e.getMessage());
+            log.error("problem in updating book" + e.getMessage());
         }
         return new ResponseEntity<>(returnValue, HttpStatus.OK);
 
@@ -82,8 +80,7 @@ public class BookController {
             bookService.deleteBook(bookId);
         }catch (Exception e){
 
-            log.error("problem in deleting book");
-            log.debug("problem in cause by"+e.getMessage());
+            log.error("problem in deleting book"+e.getMessage());
         }
 
         return new ResponseEntity<>("Book deleted successfully!.", HttpStatus.OK);
